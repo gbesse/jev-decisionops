@@ -1,0 +1,22 @@
+{
+  "name": "jev-decisionops",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Production-grade evaluation and gateway tooling for typed probabilistic decision models.",
+  "type": "module",
+  "workspaces": ["packages/*"],
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "check": "npm run check --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "coverage": "npm run coverage --workspaces --if-present",
+    "release:check": "npm run check && npm test && npm run build && npm pack --workspaces --dry-run"
+  },
+  "engines": { "node": ">=22" },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^24.5.2",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.2"
+  }
+}

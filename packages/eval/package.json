@@ -1,0 +1,26 @@
+{
+  "name": "@gbesse/jev-eval",
+  "version": "0.1.0",
+  "description": "Reproducible evaluation, calibration, threshold optimization, and CI regression gates for typed probabilistic decision models.",
+  "type": "module",
+  "bin": { "jev-eval": "dist/cli.js" },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "files": ["dist", "README.md", "LICENSE"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test": "node --import tsx --test test/*.test.ts",
+    "coverage": "node --import tsx --experimental-test-coverage --test test/*.test.ts",
+    "prepack": "npm run build"
+  },
+  "engines": { "node": ">=22" },
+  "repository": { "type": "git", "url": "git+https://github.com/gbesse/jev-decisionops.git", "directory": "packages/eval" },
+  "bugs": { "url": "https://github.com/gbesse/jev-decisionops/issues" },
+  "homepage": "https://github.com/gbesse/jev-decisionops/tree/main/packages/eval#readme",
+  "keywords": ["jev", "typesafe", "evaluation", "calibration", "decision-model", "ci"],
+  "license": "MIT",
+  "publishConfig": { "access": "public" },
+  "dependencies": { "yaml": "^2.8.1" }
+}

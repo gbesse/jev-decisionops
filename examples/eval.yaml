@@ -1,0 +1,21 @@
+version: 1
+dataset: ./data/eval.json
+outputDir: ./output
+model: jev-1.13.0
+provider:
+  type: recorded
+run:
+  concurrency: 4
+  resume: true
+policy:
+  confidenceThreshold: 0.75
+  calibrationBins: 10
+  costs:
+    falseDecision: 1
+    review: 0.1
+gates:
+  minAccuracy: 0.75
+  minCoverage: 0.5
+  minAcceptedAccuracy: 0.9
+  maxBrier: 0.3
+  maxEce: 0.25

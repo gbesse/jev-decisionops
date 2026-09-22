@@ -1,0 +1,37 @@
+[
+  {
+    "id": "support-001",
+    "state": { "ticket": "My card was charged twice. Please refund the duplicate." },
+    "questions": {
+      "department": { "type": "choice", "instructions": "Which team should handle this ticket?", "criteria": { "billing": "Charges, invoices, refunds", "technical": "Product defects and integrations", "other": "None of the above" } },
+      "urgent": { "type": "noul", "instructions": "Does the ticket explicitly communicate time pressure?", "criteria": { "true": "Explicit deadline or immediate impact", "false": "No explicit time pressure" } }
+    },
+    "expected": { "department": { "type": "choice", "value": "billing" }, "urgent": { "type": "noul", "value": false } },
+    "tags": ["support", "clean"],
+    "recordedResponse": {
+      "model": "jev-1.13.0",
+      "answers": {
+        "department": { "type": "choice", "choice": "billing", "probabilities": { "billing": 0.96, "technical": 0.02, "other": 0.02 }, "confidence": 0.94 },
+        "urgent": { "type": "noul", "noul": 0.12 }
+      },
+      "usage": { "input_tokens": 210, "output_tokens": 28 }
+    }
+  },
+  {
+    "id": "support-002",
+    "state": { "ticket": "Production login has been down for all users since 09:00." },
+    "questions": {
+      "department": { "type": "choice", "instructions": "Which team should handle this ticket?", "criteria": { "billing": "Charges, invoices, refunds", "technical": "Product defects and integrations", "other": "None of the above" } },
+      "urgent": { "type": "noul", "instructions": "Does the ticket explicitly communicate time pressure?", "criteria": { "true": "Explicit deadline or immediate impact", "false": "No explicit time pressure" } }
+    },
+    "expected": { "department": { "type": "choice", "value": "technical" }, "urgent": { "type": "noul", "value": true } },
+    "tags": ["support", "outage"],
+    "recordedResponse": {
+      "model": "jev-1.13.0",
+      "answers": {
+        "department": { "type": "choice", "choice": "technical", "probabilities": { "billing": 0.01, "technical": 0.98, "other": 0.01 }, "confidence": 0.97 },
+        "urgent": { "type": "noul", "noul": 0.97 }
+      }
+    }
+  }
+]

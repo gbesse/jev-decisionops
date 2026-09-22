@@ -1,0 +1,26 @@
+{
+  "name": "@gbesse/jev-gateway",
+  "version": "0.1.0",
+  "description": "A production System One gateway with validation, redaction, retries, rate limits, caching, fallbacks, circuit breaking, and audit.",
+  "type": "module",
+  "bin": { "jev-gateway": "dist/cli.js" },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "files": ["dist", "README.md", "LICENSE"],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test": "node --import tsx --test test/*.test.ts",
+    "coverage": "node --import tsx --experimental-test-coverage --test test/*.test.ts",
+    "prepack": "npm run build"
+  },
+  "engines": { "node": ">=22" },
+  "repository": { "type": "git", "url": "git+https://github.com/gbesse/jev-decisionops.git", "directory": "packages/gateway" },
+  "bugs": { "url": "https://github.com/gbesse/jev-decisionops/issues" },
+  "homepage": "https://github.com/gbesse/jev-decisionops/tree/main/packages/gateway#readme",
+  "keywords": ["jev", "typesafe", "gateway", "proxy", "decision-model", "security"],
+  "license": "MIT",
+  "publishConfig": { "access": "public" },
+  "dependencies": { "yaml": "^2.8.1" }
+}

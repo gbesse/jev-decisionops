@@ -1,0 +1,40 @@
+version: 1
+listen:
+  host: 127.0.0.1
+  port: 4318
+upstreams:
+  - id: typesafe-primary
+    endpoint: https://api.typesafe.ai/v1/systemone
+    apiKeyEnv: TYPESAFE_API_KEY
+    allowedModels: [jev-1.13.0]
+request:
+  maxBodyBytes: 1048576
+  maxQuestions: 256
+  timeoutMs: 15000
+  maxRetries: 2
+  maxConcurrent: 64
+rateLimit:
+  requestsPerMinute: 1200
+redaction:
+  enabled: true
+  redactCommonSecretKeys: true
+  paths:
+    - state.customer.email
+cache:
+  enabled: true
+  ttlMs: 60000
+  maxEntries: 1000
+circuitBreaker:
+  failureThreshold: 5
+  cooldownMs: 30000
+policy:
+  minConfidence: 0.65
+  onLowConfidence: return
+audit:
+  path: ./output/gateway-audit.jsonl
+  hashState: true
+  includeQuestionIds: true
+# Set this in shared deployments. Health remains public; API, metrics and readiness require it.
+# access:
+#   bearerTokenEnv: JEV_GATEWAY_TOKEN
+#   trustedProxy: false
