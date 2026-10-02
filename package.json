@@ -1,12 +1,13 @@
 {
   "name": "jev-decisionops",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "Production-grade evaluation and gateway tooling for typed probabilistic decision models.",
   "type": "module",
   "workspaces": ["packages/*"],
   "scripts": {
     "build": "npm run build --workspaces --if-present",
+    "demo:gate": "npm run build && node examples/regression-gate.mjs",
     "check": "npm run check --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "coverage": "npm run coverage --workspaces --if-present",
