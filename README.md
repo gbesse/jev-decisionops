@@ -27,6 +27,10 @@ TYPESAFE_API_KEY=... npx jev-gateway serve --config examples/gateway.yaml
 
 See [`packages/eval/README.md`](packages/eval/README.md) and [`packages/gateway/README.md`](packages/gateway/README.md) for schemas and production guidance.
 
+## See a regression gate fail offline
+
+`npm run demo:gate` evaluates the same recorded synthetic support answers twice. The baseline policy passes; a deliberately stricter Brier threshold fails and reports its reason. The example writes temporary reports only and makes no model or gateway call. The stricter number is illustrative, not a recommended production threshold.
+
 ## Design rules
 
 1. Labels are never sent to a provider.
